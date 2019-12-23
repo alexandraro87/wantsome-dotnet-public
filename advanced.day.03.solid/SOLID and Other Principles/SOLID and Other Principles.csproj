@@ -99,6 +99,8 @@
     <Compile Include="4. Interface Segregation\2.1. Identity - Before\AccountManager.cs" />
     <Compile Include="5. Dependency Inversion\1.2. Hello World - After\HelloWorld.cs" />
     <Compile Include="5. Dependency Inversion\1.1. Hello World - Before\HelloWorld.cs" />
+    <Compile Include="5. Dependency Inversion\2.2. Worker - After\Manager.cs" />
+    <Compile Include="5. Dependency Inversion\2.2. Worker - After\Worker.cs" />
     <Compile Include="5. Dependency Inversion\2.1. Worker - Before\Manager.cs" />
     <Compile Include="5. Dependency Inversion\2.1. Worker - Before\Worker.cs" />
     <Compile Include="5. Dependency Inversion\3.1. Database - Before\Courses.cs" />

@@ -6,7 +6,7 @@
     {
         public void Draw()
         {
-            throw new System.NotImplementedException();
+            //draw rectangle
         }
     }
 }

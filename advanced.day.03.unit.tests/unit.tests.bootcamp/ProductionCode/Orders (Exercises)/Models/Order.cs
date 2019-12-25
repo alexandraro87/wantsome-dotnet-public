@@ -43,7 +43,7 @@
         public string SalesRep { get; set; }
 
         public List<Invoice> Invoices { get; } = new List<Invoice>();
-        public List<Payment> Payments { get; }
+        public List<Payment> Payments { get; } = new List<Payment>();
         public decimal TotalPayments => this.Payments.Select(p => p.Amount).DefaultIfEmpty(0M).Sum();
         public List<Refund> Refunds { get; } = new List<Refund>();
 

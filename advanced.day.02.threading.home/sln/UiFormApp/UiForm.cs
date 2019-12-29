@@ -1,7 +1,9 @@
 ﻿namespace UiFormApp
 {
+    using System;
     using System.Diagnostics;
     using System.Net;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     public partial class UiForm : Form
@@ -11,35 +13,47 @@
             this.InitializeComponent();
         }
 
-        private void DownloadBtnLeft_Click(object sender, System.EventArgs e)
+        private async void DownloadBtnLeft_Click(object sender, System.EventArgs e)
         {
             var url = this.urlTextBoxLeft.Text;
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
+            try
+            {
+                var source = await this.DownloadStringAsync(url);
 
-            var source = this.DownloadString(url);
-
-            this.contentTxbLeft.Text = source;
+                this.contentTxbLeft.Text = source;
+            }
+            catch (Exception ex)
+            {
+                this.contentTxbLeft.Text = ex.Message;
+            }
             this.logLabelLeft.Text = $@"Downloaded in {stopwatch.ElapsedMilliseconds} ms";
         }
 
-        private void DownloadBtnRight_Click(object sender, System.EventArgs e)
+        private async void DownloadBtnRight_Click(object sender, System.EventArgs e)
         {
             var url = this.urlTextBoxRight.Text;
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-
-            var source = this.DownloadString(url);
+            try
+            {
+                var source = await this.DownloadStringAsync(url);
 
             this.contentTxbRight.Text = source;
+            }
+            catch (Exception ex)
+            {
+                this.contentTxbRight.Text = ex.Message;
+            }
             this.logLabelRight.Text = $@"Downloaded in {stopwatch.ElapsedMilliseconds} ms";
         }
 
-        private string DownloadString(string url)
+        private async Task<string> DownloadStringAsync(string url)
         {
-            return new WebClient().DownloadString(url);
+            return await new WebClient().DownloadStringTaskAsync(url);
         }
     }
 }
